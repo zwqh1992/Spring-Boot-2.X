@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zwqh.springboot.dao.slave.HeroDao">
+	<resultMap type="cn.zwqh.springboot.model.Hero" id="hero">
+		<id property="id" column="id"/>
+		<result property="heroCode" column="hero_code"/>
+		<result property="heroName" column="hero_name"/>
+	</resultMap>
+	<!-- 获取所有用户 -->
+	<select id="getAllHero" resultMap="hero">
+		select * from t_hero
+	</select>
+</mapper>
+

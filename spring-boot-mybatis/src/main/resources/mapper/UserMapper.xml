@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zwqh.springboot.dao.UserDao">
+	<resultMap type="cn.zwqh.springboot.model.UserEntity" id="user">
+		<id property="id" column="id"/>
+		<result property="userName" column="user_name"/>
+		<result property="userSex" column="user_sex"/>
+	</resultMap>
+	<!-- 获取所有用户 -->
+	<select id="getAll" resultMap="user">
+		select * from t_user
+	</select>
+	<!-- 根据用户ID获取用户 -->
+	<select id="getOne" resultMap="user">
+		select * from t_user where id=#{id}
+	</select>
+	<!-- 新增用户 -->
+	<insert id="insertUser" parameterType="cn.zwqh.springboot.model.UserEntity">
+		insert into t_user (user_name,user_sex) values(#{userName},#{userSex})
+	</insert>
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="cn.zwqh.springboot.model.UserEntity">
+		update t_user set user_name=#{userName},user_sex=#{userSex} where id=#{id}
+	</update>
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="Long">
+		delete from t_user where id=#{id}
+	</delete>
+</mapper>
+

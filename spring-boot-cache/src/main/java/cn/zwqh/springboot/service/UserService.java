@@ -27,5 +27,10 @@ public interface UserService {
 	 * @param user
 	 */
 	void updateUser(UserEntity user);
+	
+	
+	void deleteAll1();
+	
+	void deleteAll2();
 
 }

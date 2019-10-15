@@ -3,6 +3,7 @@ package cn.zwqh.springboot.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,6 +15,7 @@ import cn.zwqh.springboot.model.UserEntity;
 import cn.zwqh.springboot.service.UserService;
 
 @Service
+@CacheConfig(cacheNames = {"userCache"})
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -34,7 +36,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	@Caching
 	@CachePut(cacheNames = { "user" }, key = "#user.id")//写入缓存，key为user.id,一般该注解标注在新增方法上
 	public void insertUser(UserEntity user) {
 		System.out.println("写入缓存");
@@ -47,5 +48,17 @@ public class UserServiceImpl implements UserService {
 		System.out.println("清除缓存");
 		userDao.updateUser(user);
 	}
+
+	@Override
+    @CacheEvict(value="userCache",allEntries=true)//方法调用后清空所有缓存
+    public void deleteAll1() {
+	
+	}
+	
+	@Override
+    @CacheEvict(value="userCache",beforeInvocation=true)//方法调用前清空所有缓存
+    public void deleteAll2() {
+
+    }
 
 }

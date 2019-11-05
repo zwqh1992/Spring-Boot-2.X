@@ -1,0 +1,757 @@
+
+[[_paths]]
+== 资源
+
+[[_abf4087a85a0543918f0c5ccc9971119]]
+=== 接口分组1
+Api Controller
+
+
+[[_deleteuserusingpost]]
+==== 删除用户
+....
+POST /api/deleteUser
+....
+
+
+===== 说明
+id必传
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**id** +
+__必填__|用户id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/deleteUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_getallusingget]]
+==== 获取所有用户
+....
+GET /api/getAllUser
+....
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_userentity,UserEntity>> > array
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getAllUser
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+[ {
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+} ]
+----
+
+
+[[_getoneusingget]]
+==== 根据id获取用户
+....
+GET /api/getUserById
+....
+
+
+===== 说明
+id必传
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Query**|**id** +
+__必填__|用户id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_userentity,UserEntity>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getUserById?id=1
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+----
+
+
+[[_getuserbynameandsexusingpost]]
+==== 根据name和sex获取用户
+....
+POST /api/getUserByNameAndSex
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Query**|**userName** +
+__必填__|用户名|string
+|**Query**|**userSex** +
+__必填__|用户性别|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_userentity,UserEntity>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getUserByNameAndSex?userName=关羽&userSex=男
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+----
+
+
+[[_insertuserusingpost]]
+==== 新增用户
+....
+POST /api/insertUser
+....
+
+
+===== 说明
+传json，数据放body
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**body** +
+__必填__|用户对象json|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/insertUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_updateuserusingpost]]
+==== 修改用户
+....
+POST /api/updateUser
+....
+
+
+===== 说明
+传json，数据放body
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**body** +
+__必填__|用户对象json|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/updateUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_bb37718f399726fa2eb08de831de69e5]]
+=== 接口分组2
+Api Controller
+
+
+[[_deleteuserusingpost]]
+==== 删除用户
+....
+POST /api/deleteUser
+....
+
+
+===== 说明
+id必传
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**id** +
+__必填__|用户id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/deleteUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_getallusingget]]
+==== 获取所有用户
+....
+GET /api/getAllUser
+....
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_userentity,UserEntity>> > array
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getAllUser
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+[ {
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+} ]
+----
+
+
+[[_getoneusingget]]
+==== 根据id获取用户
+....
+GET /api/getUserById
+....
+
+
+===== 说明
+id必传
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Query**|**id** +
+__必填__|用户id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_userentity,UserEntity>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getUserById?id=1
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+----
+
+
+[[_getuserbynameandsexusingpost]]
+==== 根据name和sex获取用户
+....
+POST /api/getUserByNameAndSex
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Query**|**userName** +
+__必填__|用户名|string
+|**Query**|**userSex** +
+__必填__|用户性别|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_userentity,UserEntity>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/getUserByNameAndSex?userName=关羽&userSex=男
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+----
+
+
+[[_insertuserusingpost]]
+==== 新增用户
+....
+POST /api/insertUser
+....
+
+
+===== 说明
+传json，数据放body
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**body** +
+__必填__|用户对象json|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/insertUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_updateuserusingpost]]
+==== 修改用户
+....
+POST /api/updateUser
+....
+
+
+===== 说明
+传json，数据放body
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Body**|**body** +
+__必填__|用户对象json|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Page Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/updateUser
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+

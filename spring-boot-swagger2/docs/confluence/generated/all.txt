@@ -1,0 +1,690 @@
+h1. Swagger Demo Restful API Docs
+
+
+h2. 概览 {anchor:overview}
+Swagger 示例 Restful Api 文档
+
+
+h3. 版本信息
+_版本_ : 1.0
+
+
+h3. 联系方式
+_名字_ : 朝雾轻寒\\ 
+_邮箱_ : zwqh@clover1314.com
+
+
+h3. URI scheme
+_域名_ : 127.0.0.1:8080\\ 
+_基础路径_ : /
+
+
+h3. 标签
+
+* 接口分组1 : Api Controller
+* 接口分组2 : Api Controller
+
+
+
+
+h2. 资源 {anchor:paths}
+
+h3. 接口分组1 {anchor:abf4087a85a0543918f0c5ccc9971119}
+Api Controller
+
+
+h4. 删除用户 {anchor:deleteuserusingpost}
+{noformat}
+POST /api/deleteUser
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/deleteUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 获取所有用户 {anchor:getallusingget}
+{noformat}
+GET /api/getAllUser
+{noformat}
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||< [UserEntity|#userentity] > array|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getAllUser
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+[ {
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+} ]
+{code}
+
+
+h4. 根据id获取用户 {anchor:getoneusingget}
+{noformat}
+GET /api/getUserById
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[UserEntity|#userentity]|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getUserById?id=1
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+{code}
+
+
+h4. 根据name和sex获取用户 {anchor:getuserbynameandsexusingpost}
+{noformat}
+POST /api/getUserByNameAndSex
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*userName*\\ \\ _必填_||用户名||string|
+|*Query*|*userSex*\\ \\ _必填_||用户性别||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[UserEntity|#userentity]|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getUserByNameAndSex?userName=关羽&userSex=男
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+{code}
+
+
+h4. 新增用户 {anchor:insertuserusingpost}
+{noformat}
+POST /api/insertUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/insertUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 修改用户 {anchor:updateuserusingpost}
+{noformat}
+POST /api/updateUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/updateUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h3. 接口分组2 {anchor:bb37718f399726fa2eb08de831de69e5}
+Api Controller
+
+
+h4. 删除用户 {anchor:deleteuserusingpost}
+{noformat}
+POST /api/deleteUser
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/deleteUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 获取所有用户 {anchor:getallusingget}
+{noformat}
+GET /api/getAllUser
+{noformat}
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||< [UserEntity|#userentity] > array|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getAllUser
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+[ {
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+} ]
+{code}
+
+
+h4. 根据id获取用户 {anchor:getoneusingget}
+{noformat}
+GET /api/getUserById
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[UserEntity|#userentity]|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getUserById?id=1
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+{code}
+
+
+h4. 根据name和sex获取用户 {anchor:getuserbynameandsexusingpost}
+{noformat}
+POST /api/getUserByNameAndSex
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*userName*\\ \\ _必填_||用户名||string|
+|*Query*|*userSex*\\ \\ _必填_||用户性别||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[UserEntity|#userentity]|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/getUserByNameAndSex?userName=关羽&userSex=男
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "id" : 1,
+  "userName" : "关羽",
+  "userSex" : "男"
+}
+{code}
+
+
+h4. 新增用户 {anchor:insertuserusingpost}
+{noformat}
+POST /api/insertUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/insertUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 修改用户 {anchor:updateuserusingpost}
+{noformat}
+POST /api/updateUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Page Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}\*/*{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/api/updateUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+
+
+h2. 定义 {anchor:definitions}
+
+h3. UserEntity {anchor:userentity}
+用户对象
+
+
+||名称||说明||类型||
+|*id*\\ \\ _可选_||用户id\\ \\ *样例* : {noformat}1{noformat}||integer (int64)|
+|*userName*\\ \\ _可选_||用户名\\ \\ *样例* : {noformat}"关羽"{noformat}||string|
+|*userSex*\\ \\ _可选_||用户性别\\ \\ *样例* : {noformat}"男"{noformat}||string|
+
+
+
+
+

@@ -1,0 +1,25 @@
+
+[[_definitions]]
+== 定义
+
+[[_userentity]]
+=== UserEntity
+用户对象
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**id** +
+__可选__|用户id +
+**样例** : `1`|integer (int64)
+|**userName** +
+__可选__|用户名 +
+**样例** : `"关羽"`|string
+|**userSex** +
+__可选__|用户性别 +
+**样例** : `"男"`|string
+|===
+
+
+

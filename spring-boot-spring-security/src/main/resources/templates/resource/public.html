@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>公共资源</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+</head>
+<body>
+这是公共资源，大家都能访问
+<br>
+<br>
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" id="hidCSRF">
+<button class="layui-btn" id="btnPublic">公共权限请求按钮</button>
+<br>
+<br>
+<button class="layui-btn" id="btnVip">VIP权限请求按钮</button>
+<script type="text/javascript" th:src="@{/js/jquery-1.8.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript">
+		layui.use('form', function() {
+			var form = layui.form;
+			$("#btnPublic").click(function(){
+				$.ajax({
+					url:"/test/public",
+					type:"POST",
+					data:{id:1},
+					beforeSend:function(xhr){
+						xhr.setRequestHeader('X-CSRF-TOKEN',$("#hidCSRF").val());	
+					},
+					success:function(res){
+						alert(res.code+":"+res.msg);
+				
+					}	
+				});
+			});
+			$("#btnVip").click(function(){
+				$.ajax({
+					url:"/test/vip",
+					type:"POST",
+					data:{id:2},
+					beforeSend:function(xhr){
+						xhr.setRequestHeader('X-CSRF-TOKEN',$("#hidCSRF").val());	
+					},
+					success:function(res){
+						alert(res.code+":"+res.msg);
+						
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

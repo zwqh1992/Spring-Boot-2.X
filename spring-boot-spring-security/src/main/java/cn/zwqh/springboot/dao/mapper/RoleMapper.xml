@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zwqh.springboot.dao.RoleDao">
+	<resultMap type="cn.zwqh.springboot.model.Role" id="role">
+		<id property="id" column="id"/>
+		<result property="roleName" column="role_name"/>
+	</resultMap>
+	<!-- 根据用户id获取用户角色 -->
+	<select id="getUserRoleByUserId" resultMap="role">
+		select r.* from t_role r,t_user_roles ur where r.id=ur.role_id and ur.user_id=#{id}
+	</select>
+</mapper>
+

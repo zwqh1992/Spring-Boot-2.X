@@ -1,0 +1,41 @@
+@charset "UTF-8";
+body
+{
+	margin:0;
+	padding:0;
+	background: url('/images/bg.jpg') no-repeat;
+	background-size: cover;
+}
+.login-main
+{
+	width: 400px;
+    height: 400px;
+    margin: 0px auto;
+    margin-top: 150px;
+    padding: 50px;
+    padding-top: 100px;
+    box-shadow: 3px 3px 10px #000;
+    background-color: white;
+}
+.layui-elip
+{
+	width:100%;
+	text-align:center;
+	color:#2F4056;
+}
+.layui-input,.layui-btn
+{
+	width:400px;
+	height:38px;
+	margin:0px auto;
+	margin-top:20px;
+}
+.form-message
+{
+	width:400px;
+	height:38px;
+	margin:0px auto;
+	margin-top:20px;
+	text-align: center;
+	color:#FF5722;
+}

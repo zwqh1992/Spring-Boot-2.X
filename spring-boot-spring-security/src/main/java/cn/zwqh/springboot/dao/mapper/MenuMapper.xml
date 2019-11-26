@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zwqh.springboot.dao.MenuDao">
+	<resultMap type="cn.zwqh.springboot.model.Menu" id="menu">
+		<id property="id" column="id"/>
+		<result property="menuName" column="menu_name"/>
+		<result property="menuUrl" column="menu_url"/>
+		<result property="menuCode" column="menu_code"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="menuType" column="menu_type"/>
+		<result property="orderNum" column="order_num"/>
+	</resultMap>
+	<!-- 根据角色获取菜单列表 -->
+	<select id="getRoleMenuByRoles" resultMap="menu">
+		select * from t_menu m,t_role_menus rm where m.deleted=0 and m.id=rm.menu_id 
+		and rm.role_id in
+		<foreach collection="roles" item="role" open="(" separator="," close=")">
+			#{role.id}
+		</foreach>
+		
+	</select>
+</mapper>
+

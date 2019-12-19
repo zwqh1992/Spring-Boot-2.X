@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 26/11/2019 13:00:43
+ Date: 19/12/2019 15:26:19
 */
 
 SET NAMES utf8mb4;
@@ -35,7 +35,7 @@ CREATE TABLE `t_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `deleted` int(1) DEFAULT '0' COMMENT '删除状态：0-存在1-已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of t_menu
@@ -46,6 +46,7 @@ INSERT INTO `t_menu` VALUES (2, 'VIP资源', '/vipResource', NULL, 0, 0, 99, NUL
 INSERT INTO `t_menu` VALUES (3, '主页', '/home', NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 0);
 INSERT INTO `t_menu` VALUES (4, '公共权限请求按钮', '/test/public', NULL, 0, 1, 99, NULL, NULL, NULL, NULL, 0);
 INSERT INTO `t_menu` VALUES (5, 'VIP权限请求按钮', '/test/vip', NULL, 0, 1, 99, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `t_menu` VALUES (6, 'mian', '/main', NULL, 0, 0, 99, NULL, NULL, NULL, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -75,7 +76,7 @@ CREATE TABLE `t_role_menus` (
   `role_id` int(8) DEFAULT NULL COMMENT '角色id',
   `menu_id` int(8) DEFAULT NULL COMMENT '菜单id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of t_role_menus
@@ -89,6 +90,8 @@ INSERT INTO `t_role_menus` VALUES (5, 2, 3);
 INSERT INTO `t_role_menus` VALUES (6, 1, 4);
 INSERT INTO `t_role_menus` VALUES (7, 2, 4);
 INSERT INTO `t_role_menus` VALUES (8, 2, 5);
+INSERT INTO `t_role_menus` VALUES (9, 1, 6);
+INSERT INTO `t_role_menus` VALUES (10, 2, 6);
 COMMIT;
 
 -- ----------------------------

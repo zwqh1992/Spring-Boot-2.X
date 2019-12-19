@@ -23,13 +23,15 @@ public class RbacPermission{
 	public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
 		Object principal = authentication.getPrincipal();
 		boolean hasPermission = false;
-		// 读取用户所拥有的权限菜单
-		List<Menu> menus = ((UserEntity) principal).getRoleMenus();
-		System.out.println(menus.size());
-		for (Menu menu : menus) {
-			if (antPathMatcher.match(menu.getMenuUrl(), request.getRequestURI())) {
-				hasPermission = true;
-				break;
+		if (principal instanceof UserEntity) {
+			// 读取用户所拥有的权限菜单
+			List<Menu> menus = ((UserEntity) principal).getRoleMenus();
+			System.out.println(menus.size());
+			for (Menu menu : menus) {
+				if (antPathMatcher.match(menu.getMenuUrl(), request.getRequestURI())) {
+					hasPermission = true;
+					break;
+				}
 			}
 		}
 		return hasPermission;

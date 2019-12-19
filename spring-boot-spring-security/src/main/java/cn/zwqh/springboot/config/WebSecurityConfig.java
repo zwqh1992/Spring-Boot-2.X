@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.headers().frameOptions().disable();//解决 in a frame because it set 'X-Frame-Options' to 'DENY' 问题			
 		//http.anonymous().disable();
 		http.authorizeRequests()
-			.antMatchers("/login/**","/initUserData","/main")//不拦截登录相关方法		
+			.antMatchers("/login/**","/initUserData")//不拦截登录相关方法		
 			.permitAll()		
 			//.antMatchers("/user").hasRole("ADMIN")  // user接口只有ADMIN角色的可以访问
 //			.anyRequest()

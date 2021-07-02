@@ -3,7 +3,10 @@ package cn.zwqh.springboot.mapper;
 import cn.zwqh.springboot.entity.Orders;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @program: spring-boot-shardingsphere
@@ -26,4 +29,22 @@ public interface OrdersMapper {
             @Result(property = "orderAmount", column = "order_amount",jdbcType = JdbcType.DOUBLE)
     })
     Orders selectOne(Integer orderId);
+
+    @Select("select * from t_orders where order_id = #{orderId} and user_id=#{userId}")
+    @Results({
+            @Result(property = "orderId", column = "order_id",jdbcType = JdbcType.INTEGER),
+            @Result(property = "orderType", column = "order_type",jdbcType = JdbcType.INTEGER),
+            @Result(property = "userId", column = "user_id",jdbcType = JdbcType.INTEGER),
+            @Result(property = "orderAmount", column = "order_amount",jdbcType = JdbcType.DOUBLE)
+    })
+    Orders selectOneDB(Orders orders);
+
+    @Select("select * from t_orders where order_id > #{orderId}")
+    @Results({
+            @Result(property = "orderId", column = "order_id",jdbcType = JdbcType.INTEGER),
+            @Result(property = "orderType", column = "order_type",jdbcType = JdbcType.INTEGER),
+            @Result(property = "userId", column = "user_id",jdbcType = JdbcType.INTEGER),
+            @Result(property = "orderAmount", column = "order_amount",jdbcType = JdbcType.DOUBLE)
+    })
+    List<Orders> getOrdersListGreaterThanOrderId(Integer orderId);
 }

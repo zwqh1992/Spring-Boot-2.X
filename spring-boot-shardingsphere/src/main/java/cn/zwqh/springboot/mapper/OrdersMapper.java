@@ -47,4 +47,8 @@ public interface OrdersMapper {
             @Result(property = "orderAmount", column = "order_amount",jdbcType = JdbcType.DOUBLE)
     })
     List<Orders> getOrdersListGreaterThanOrderId(Integer orderId);
+
+
+    @Insert("insert into orders(order_id,order_type,user_id,order_amount) values(#{orderId},#{orderType},#{userId},#{orderAmount})")
+    void insertOrder(Orders orders);
 }

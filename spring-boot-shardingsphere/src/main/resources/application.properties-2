@@ -19,9 +19,20 @@ spring.shardingsphere.datasource.ds1.url=jdbc:mysql://127.0.0.1:3306/ds1?serverT
 spring.shardingsphere.datasource.ds1.username=root
 spring.shardingsphere.datasource.ds1.password=123456
 
-# 广播表配置
-spring.shardingsphere.sharding.broadcast-tables=t_order_type
-spring.shardingsphere.sharding.tables.t_order_type.actual-data-nodes=ds$->{0..1}.t_order_type
+#指定数据库的分布情况
+spring.shardingsphere.sharding.tables.t_orders.actual-data-nodes=ds$->{0..1}.t_orders_$->{0..1}
 
-#显示sql
+#指定orders表里主键order_id生成策略
+spring.shardingsphere.sharding.tables.t_orders.key-generator.column=order_id
+spring.shardingsphere.sharding.tables.t_orders.key-generator.type=SNOWFLAKE
+
+#指定库分片策略。根据user_id的奇偶性来判断插入到哪个库
+spring.shardingsphere.sharding.tables.t_orders.database-strategy.inline.sharding-column=user_id
+spring.shardingsphere.sharding.tables.t_orders.database-strategy.inline.algorithm-expression=ds${user_id%2}
+
+#指定表分片策略。根据order_id的奇偶性来判断插入到哪个表
+spring.shardingsphere.sharding.tables.t_orders.table-strategy.inline.sharding-column=order_id
+spring.shardingsphere.sharding.tables.t_orders.table-strategy.inline.algorithm-expression=t_orders_${order_id%2}
+
+#打开sql输出日志
 spring.shardingsphere.props.sql.show=true

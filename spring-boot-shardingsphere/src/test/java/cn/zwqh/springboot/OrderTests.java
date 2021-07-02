@@ -67,5 +67,20 @@ public class OrderTests {
         System.out.println(ordersMapper.getOrdersListGreaterThanOrderId(50));
     }
 
+    /**
+     * 垂直分库
+     */
+    @Test
+    public void addOrder() {
+        for (int i = 1; i <= 10; i++) {
+            Orders orders = new Orders();
+            orders.setOrderId(i);
+            orders.setUserId(i);
+            orders.setOrderType(i % 2);
+            orders.setOrderAmount(1000.0 * i);
+            ordersMapper.insertOrder(orders);
+        }
+    }
+
 
 }

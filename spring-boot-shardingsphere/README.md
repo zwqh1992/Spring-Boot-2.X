@@ -1,4 +1,4 @@
-# 工程简介
+### 配置说明
 
 1、水平分表配置：application.properties-1
 
@@ -6,5 +6,5 @@
 
 3、垂直分库配置：application.properties-3
 
-# 延伸阅读
+4、广播表配置：application.properties-4
 

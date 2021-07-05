@@ -27,4 +27,20 @@ public class UserTests {
             userMapper.insertUser(userEntity);
         }
     }
+
+    @Test
+    public void insertUserInfo() {
+        for (int i = 1; i <= 10; i++) {
+            UserEntity userEntity = new UserEntity();
+            userEntity.setUserId(i);
+            userEntity.setUserName("user" + i);
+            userMapper.insertUserInfo(userEntity);
+        }
+    }
+
+
+    @Test
+    public void getUserInfo() {
+        System.out.println(userMapper.getUserInfo(1));
+    }
 }

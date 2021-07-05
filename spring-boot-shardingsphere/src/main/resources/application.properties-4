@@ -1,0 +1,27 @@
+
+serser.port=8080
+
+spring.application.name=spring-boot-shardingsphere
+
+#配置数据源的名称
+spring.shardingsphere.datasource.names=ds0,ds1
+
+#配置数据源的具体内容，
+spring.shardingsphere.datasource.ds0.type=com.alibaba.druid.pool.DruidDataSource
+spring.shardingsphere.datasource.ds0.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.shardingsphere.datasource.ds0.url=jdbc:mysql://127.0.0.1:3306/ds0?serverTimezone=UTC
+spring.shardingsphere.datasource.ds0.username=root
+spring.shardingsphere.datasource.ds0.password=123456
+
+spring.shardingsphere.datasource.ds1.type=com.alibaba.druid.pool.DruidDataSource
+spring.shardingsphere.datasource.ds1.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.shardingsphere.datasource.ds1.url=jdbc:mysql://127.0.0.1:3306/ds1?serverTimezone=UTC
+spring.shardingsphere.datasource.ds1.username=root
+spring.shardingsphere.datasource.ds1.password=123456
+
+# 广播表配置
+spring.shardingsphere.sharding.broadcast-tables=t_order_type
+spring.shardingsphere.sharding.tables.t_order_type.actual-data-nodes=ds$->{0..1}.t_order_type
+
+#显示sql
+spring.shardingsphere.props.sql.show=true

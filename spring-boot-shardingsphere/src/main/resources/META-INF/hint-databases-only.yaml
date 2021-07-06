@@ -1,0 +1,39 @@
+dataSources:
+  ds_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0
+    username: root
+    password: 123456
+  ds_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/sharding_sphere_1
+    username: root
+    password: 123456
+
+shardingRule:
+  tables:
+    t_order:
+      actualDataNodes: ds_${0..1}.t_order
+      keyGenerator:
+        type: SNOWFLAKE
+        column: order_id
+        props:
+          worker.id: 123
+    t_order_item:
+      actualDataNodes: ds_${0..1}.t_order_item
+  bindingTables:
+    - t_order,t_order_item
+  # 广播表
+  broadcastTables:
+    - t_address
+  # 默认分库策略
+  defaultDatabaseStrategy:
+    hint:
+      algorithmClassName: cn.zwqh.springboot.hint.MyHintAlgorithm
+  # 默认分表策略
+  defaultTableStrategy:
+    # 不分表
+    none:
+
+props:
+  sql.show: true

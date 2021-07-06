@@ -1,0 +1,45 @@
+dataSources:
+  ds_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0
+    username: root
+    password: 123456
+  ds_1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_1
+    username: root
+    password: 123456
+
+shardingRule:
+  tables:
+    t_order:
+      actualDataNodes: ds_${0..1}.t_order_${0..1}
+      databaseStrategy:
+        hint:
+          algorithmClassName: cn.zwqh.springboot.hint.MyHintAlgorithm
+      tableStrategy:
+        hint:
+          algorithmClassName: cn.zwqh.springboot.hint.MyHintAlgorithm
+      keyGenerator:
+        type: SNOWFLAKE
+        column: order_id
+        props:
+          worker.id: 123
+    t_order_item:
+      actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+  bindingTables:
+    - t_order,t_order_item
+  broadcastTables:
+    - t_address
+
+  defaultDatabaseStrategy:
+    inline:
+      shardingColumn: user_id
+      algorithmExpression: ds_${user_id % 2}
+  defaultTableStrategy:
+    inline:
+      shardingColumn: order_id
+      algorithmExpression: t_order_item_${order_id % 2}
+
+props:
+  sql.show: true

@@ -1,0 +1,19 @@
+dataSources:
+  ds_master: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0
+    username: root
+    password: 123456
+  ds_slave_0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/sharding_sphere_1
+    username: root
+    password: 123456
+
+masterSlaveRule:
+  name: ds_ms
+  masterDataSourceName: ds_master
+  slaveDataSourceNames: [ds_slave_0]
+
+props:
+  sql.show: true

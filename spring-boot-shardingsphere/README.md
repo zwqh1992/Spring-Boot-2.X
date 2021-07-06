@@ -8,3 +8,11 @@
 
 4、广播表配置：application.properties-4
 
+5、读写分离配置：application.properties-5
+
+6、hint分库配置：hint-databases-only.yaml
+
+7、hint分库分表配置：hint-databases-tables.yaml
+
+8、hint读写分离配置：hint-master-only.yaml
+
